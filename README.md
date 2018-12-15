@@ -58,7 +58,7 @@ directory. I prefer to create the files, but feel free to choose the method you
 prefer.
 
 ## Usage
-Currently, this command only comes with two unique commands: `switch` and
-`list`. Any other command, `vb` will assume it's a command meant for `vagrant`
+Currently, this command only comes with two unique arguments: `switch` and
+`list`. Any other argument, `vb` will assume it's a command meant for `vagrant`
 and will pass it as an argument to `vagrant`.
 
