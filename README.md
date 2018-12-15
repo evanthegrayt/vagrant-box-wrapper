@@ -13,7 +13,7 @@ or vanilla `bash`.
 ### oh-my-zsh
 Clone the repository in your `$ZSH_CUSTOM/plugins` directory
 ```sh
-git clone https://github.com/evanthegrayt/vb.git $ZSH_CUSTOM/plugins/vb
+git clone https://github.com/evanthegrayt/vagrant-box-switcher.git $ZSH_CUSTOM/plugins/vb
 ```
 Then add the plugin to your `$HOME/.zshrc` file in the `plugins` array:
 ```sh
