@@ -37,7 +37,10 @@ vb() {
             case $current_vagrant_box in
                 vagrant-ique)   box=vagrant-dotcom        ;;
                 vagrant-dotcom) box=vagrant-ique          ;;
-                *) echo "[CURRENT_VAGRANT_BOX] not set!"  ;;
+                *)
+                    echo "[CURRENT_VAGRANT_BOX] not set!"
+                    return
+                    ;;
             esac
             [[ -d ${cache%/*} ]] || mkdir -p ${cache%/*}
             echo $box > $cache
