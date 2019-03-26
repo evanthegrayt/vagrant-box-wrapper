@@ -52,11 +52,6 @@ VB_BOXES_LOCATION="/path/to/where/boxes/are"
 VB_BOXES=(vagrant_box_1 vagrant_box_2)
 ```
 
-I chose to allow both methods because some people prefer not to pollute their
-environment, and some poeple don't like creating a lot of dotfiles in their home
-directory. I prefer to create the files, but feel free to choose the method you
-prefer.
-
 ## Usage
 Currently, this command only comes with two unique arguments: `switch` and
 `list`. Any other argument, `vb` will assume it's a command meant for `vagrant`
