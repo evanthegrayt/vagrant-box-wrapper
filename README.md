@@ -23,7 +23,7 @@ Then add the plugin to your `$HOME/.zshrc` file in the `plugins` array:
 plugins=(vb) # Obviously, leave your other plugins in the array.
 ```
 
-This plugin also supports `zsh` tab-completion when using `oh-my-zsh`.
+This plugin also supports `zsh` tab-completion when using `zsh`.
 
 ### bash-it
 Clone the repository in your `$BASH_IT_CUSTOM` directory.
