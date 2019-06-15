@@ -1,5 +1,5 @@
 ## vb [command]
-A wrapper plugin for [vagrant](https://www.vagrantup.com/) that  allows for
+A wrapper plugin for [vagrant](https://www.vagrantup.com/) that allows for
 calling `vagrant` commands from outside of the box directory. Also, if the user
 has multiple `vagrant` boxes, the `switch` parameter switches which box the
 commands deal with.
@@ -54,7 +54,22 @@ VB_BOXES_LOCATION="/path/to/where/boxes/are"
 VB_BOXES=(vagrant_box_1 vagrant_box_2 vagrant_box_3)
 ```
 
-Currently, this command only comes with two unique arguments: `switch` and
-`list`. Any other argument, `vb` will forward to the `vagrant` command. Use this
-feature to run common `vagrant` commands, such as `up` or `ssh`.
+Additionally, you can enable/disable colored terminal output, and even change
+the colors.
+
+```sh
+VB_COLOR=false               # Default: true. Setting to false disables colors
+# The following lines would make the colored output bold.
+VB_SUCCESS_COLOR='\e[1;92m'  # Bold green.   Default: '\e[0;92m' (green)
+VB_WARNING_COLOR='\e[1;93m'  # Bold yellow.  Default: '\e[0;93m' (yellow)
+VB_ERROR_COLOR='\e[1;91m'    # Bold red.     Default: '\e[0;91m' (red)
+```
+
+The `vb` command comes with three unique arguments.
+- `switch` will switch the box to the next in the array.
+- `list` will display available boxes, and which is currently being used.
+- `use [BOX]` skips cycling of boxes and sets current box to `BOX`.
+
+Any other argument, `vb` will attempt to forward to the `vagrant` command. Use
+this feature to run common `vagrant` commands, such as `up`, `ssh`, `halt`, etc.
 
