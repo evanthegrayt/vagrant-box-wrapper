@@ -42,7 +42,7 @@ vb() {
         return 1
     elif [[ -z $VB_BOXES_LOCATION ]]; then
         printf "${VB_ERROR_COLOR}To use this command, you must set " >&2
-        printf "\`VB_BOXES_LOCATION=\"\"' in a startup file, or ">&2
+        printf "\`VB_BOXES_LOCATION=\"\"' in a startup file, or " >&2
         printf "\`~/.vbrc'$VB_RESET\n" >&2
         return 1
     fi

@@ -1,9 +1,21 @@
-## vb [command]
+# Vagrant Box Wrapper
 A wrapper plugin for [vagrant](https://www.vagrantup.com/) that allows for
 calling `vagrant` commands from outside of the box directory. Also, if the user
 has multiple `vagrant` boxes, the `switch` parameter switches which box the
 commands deal with.
 
+## Table of Contents
+- [Screenshot](#screenshot)
+- [Installation](#installation)
+  - [Oh-My-Zsh](#oh-my-zsh)
+  - [Bash-It](#bash-it)
+  - [Vanilla Zsh or Bash](#vanilla-zsh-or-bash)
+- [Usage](#usage)
+  - [Setup](#setup)
+  - [Colors](#colors)
+  - [Commands](#commands)
+
+## Screenshot
 ![](images/example.jpg)
 
 ## Installation
@@ -38,6 +50,7 @@ Just source the `vb.plugin.bash` file from one of your startup files, such as
 `~/.zshrc` or `~/.bashrc`.
 
 ## Usage
+### Setup
 To use this function, you need to add `VB_BOXES_LOCATION=[dir]` and
 `VB_BOXES=([BOX NAMES])` as variables in either a startup file, or a file named
 `$HOME/.vbrc`.
@@ -54,8 +67,12 @@ VB_BOXES_LOCATION="/path/to/where/boxes/are"
 VB_BOXES=(vagrant_box_1 vagrant_box_2 vagrant_box_3)
 ```
 
+You can view my `.cdcrc` file
+[here](https://github.com/evanthegrayt/dotfiles/blob/master/resource/vbrc).
+
+### Colors
 Additionally, you can enable/disable colored terminal output, and even change
-the colors.
+the colors, by adding the following to your `~/.vbrc` or a startup file.
 
 ```sh
 VB_COLOR=false               # Default: true. Setting to false disables colors
@@ -65,10 +82,12 @@ VB_WARNING_COLOR='\e[1;93m'  # Bold yellow.  Default: '\e[0;93m' (yellow)
 VB_ERROR_COLOR='\e[1;91m'    # Bold red.     Default: '\e[0;91m' (red)
 ```
 
+### Commands
 The `vb` command comes with three unique arguments.
 - `switch` will switch the box to the next in the array.
 - `list` will display available boxes, and which is currently being used.
 - `use [BOX]` skips cycling of boxes and sets current box to `BOX`.
+- `-h` will give a brief usage.
 
 Any other argument, `vb` will attempt to forward to the `vagrant` command. Use
 this feature to run common `vagrant` commands, such as `up`, `ssh`, `halt`, etc.
