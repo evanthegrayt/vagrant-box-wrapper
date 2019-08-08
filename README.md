@@ -5,7 +5,7 @@ has multiple `vagrant` boxes, the `switch` parameter switches which box the
 commands deal with.
 
 ## Table of Contents
-- [Screenshot](#screenshot)
+- [Screenshot Example](#screenshot-example)
 - [Installation](#installation)
   - [Oh-My-Zsh](#oh-my-zsh)
   - [Bash-It](#bash-it)
@@ -15,7 +15,7 @@ commands deal with.
   - [Colors](#colors)
   - [Commands](#commands)
 
-## Screenshot
+## Screenshot Example
 ![](images/example.jpg)
 
 ## Installation
@@ -68,7 +68,7 @@ VB_BOXES=(vagrant_box_1 vagrant_box_2 vagrant_box_3)
 ```
 
 You can view my `.cdcrc` file
-[here](https://github.com/evanthegrayt/dotfiles/blob/master/resource/vbrc).
+[here](https://github.com/evanthegrayt/dotfiles/blob/master/dotfiles/vbrc).
 
 ### Colors
 Additionally, you can enable/disable colored terminal output, and even change
