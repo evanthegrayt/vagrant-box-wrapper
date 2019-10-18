@@ -35,7 +35,8 @@ Then add the plugin to your `$HOME/.zshrc` file in the `plugins` array:
 plugins=(vb) # Obviously, leave your other plugins in the array.
 ```
 
-This plugin also supports `zsh` tab-completion when using `zsh`.
+This plugin also supports tab-completion when using a version of `bash` or `zsh`
+that supports it.
 
 ### bash-it
 Clone the repository in your `$BASH_IT_CUSTOM` directory.
@@ -67,7 +68,7 @@ VB_BOXES_LOCATION="/path/to/where/boxes/are"
 VB_BOXES=(vagrant_box_1 vagrant_box_2 vagrant_box_3)
 ```
 
-You can view my `.cdcrc` file
+You can view my `.vbrc` file
 [here](https://github.com/evanthegrayt/dotfiles/blob/master/dotfiles/vbrc).
 
 ### Colors
