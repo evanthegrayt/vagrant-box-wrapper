@@ -78,6 +78,14 @@ vb() {
             printf "Switching to box [${VB_SUCCESS_COLOR}$box$VB_RESET]\n"
             ;;
 
+        cd)
+            cd $working_dir
+            ;;
+
+        echo)
+            echo $working_dir
+            ;;
+
         use)
             box="$2"
 
@@ -131,6 +139,5 @@ vb() {
             ;;
 
     esac
-
 }
 
