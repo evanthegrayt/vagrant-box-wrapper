@@ -84,11 +84,13 @@ VB_ERROR_COLOR='\e[1;91m'    # Bold red.     Default: '\e[0;91m' (red)
 ```
 
 ### Commands
-The `vb` command comes with three unique arguments.
-- `switch` will switch the box to the next in the array.
-- `list` will display available boxes, and which is currently being used.
+The `vb` command comes with a few unique arguments.
+- `switch` switches the box to the next in the array.
+- `list` displays all available boxes, and which is currently being used.
+- `cd` changes your current directory to the current box loction.
+- `echo` lists the full path to the current box.
 - `use [BOX]` skips cycling of boxes and sets current box to `BOX`.
-- `-h` will give a brief usage.
+- `-h` gives a brief usage.
 
 Any other argument, `vb` will attempt to forward to the `vagrant` command. Use
 this feature to run common `vagrant` commands, such as `up`, `ssh`, `halt`, etc.

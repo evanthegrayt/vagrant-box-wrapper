@@ -1,4 +1,4 @@
 _vb_vagrant_args() {
-    echo list use switch
+    printf "list\nuse\nswitch\ncd\necho"
     vagrant -h | "grep" -E "^\s+" | awk '{print $1}' | tr -d ','
 }
