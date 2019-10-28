@@ -121,11 +121,17 @@ vb() {
         -h|'')
             printf "${VB_SUCCESS_COLOR}USAGE: vb [option]$VB_RESET\n"
             echo
-            printf "${VB_SUCCESS_COLOR}vb options:$VB_RESET\n"
-            printf "  ${VB_WARNING_COLOR}list:$VB_RESET   "
+            printf "${VB_SUCCESS_COLOR}vb options$VB_RESET\n"
+            printf "  ${VB_WARNING_COLOR}list$VB_RESET      | "
             printf "list available boxes, and show current box\n"
-            printf "  ${VB_WARNING_COLOR}switch:$VB_RESET "
+            printf "  ${VB_WARNING_COLOR}switch$VB_RESET    | "
             printf "switch which vagrant box the vb command handles\n"
+            printf "  ${VB_WARNING_COLOR}use [BOX]$VB_RESET | "
+            printf "switch to the specified box\n"
+            printf "  ${VB_WARNING_COLOR}cd$VB_RESET        | "
+            printf "cd to the box directory\n"
+            printf "  ${VB_WARNING_COLOR}echo$VB_RESET      | "
+            printf "echo the path of the current box\n"
             echo
             printf "For ${VB_SUCCESS_COLOR}vagrant$VB_RESET help, "
             printf "run with '${VB_WARNING_COLOR}--help$VB_RESET' "
