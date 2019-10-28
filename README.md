@@ -19,36 +19,44 @@ commands deal with.
 ![](images/example.jpg)
 
 ## Installation
-I wrote this function as an
-[oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) plugin, but it will work
-with vanilla `zsh`, or even [bash-it](https://github.com/Bash-it/bash-it)
-or vanilla `bash`.
-
 ### oh-my-zsh
-Clone the repository in your `$ZSH_CUSTOM/plugins` directory. Make sure to name
-the directory `vb`.
+Clone the repository in your `$ZSH_CUSTOM/plugins` directory
 ```sh
-git clone https://github.com/evanthegrayt/vagrant-box-switcher.git $ZSH_CUSTOM/plugins/vb
+git clone https://github.com/evanthegrayt/vagrant-box-wrapper.git \
+  $ZSH_CUSTOM/plugins/vb
 ```
 Then add the plugin to your `$HOME/.zshrc` file in the `plugins` array:
 ```sh
 plugins=(vb) # Obviously, leave your other plugins in the array.
 ```
 
-This plugin also supports tab-completion when using a version of `bash` or `zsh`
-that supports it.
-
 ### bash-it
-Clone the repository in your `$BASH_IT_CUSTOM` directory.
+Clone the repository in your `$BASH_IT_CUSTOM` directory
 ```sh
-git clone https://github.com/evanthegrayt/vb.git $BASH_IT_CUSTOM/vb
+git clone https://github.com/evanthegrayt/vagrant-box-wrapper.git \
+  $BASH_IT_CUSTOM/vb
 ```
 Files in this directory that end with `.bash` are automatically sourced, so
 there's nothing else to do.
 
 ### Vanilla zsh or bash
-Just source the `vb.plugin.bash` file from one of your startup files, such as
-`~/.zshrc` or `~/.bashrc`.
+Clone the repository wherever you like, and source either the `vb.plugin.zsh`
+file for `zsh`, or `vb.plugin.bash` file for `bash`, from one of your startup
+files, such as `~/.zshrc` or `~/.bashrc`, respectively.
+
+```sh
+# Where $INSTALLATION_PATH is the path to where you installed the plugin.
+source $INSTALLATION_PATH/vb.plugin.zsh  # in ~/.zshrc
+source $INSTALLATION_PATH/vb.plugin.bash # in ~/.bashrc
+```
+
+If you're using a version of `zsh`/`bash` that doesn't support the completion
+features, or you just don't want to use them, just source the `vb.sh` file
+directly.
+
+```sh
+source $INSTALLATION_PATH/vb.sh # in either ~/.zshrc or ~/.bashrc
+```
 
 ## Usage
 ### Setup
