@@ -6,11 +6,18 @@ vb() {
     local current_box
 
     local cmd="$1"
-    local cache="${ZSH_CACHE_DIR:-"$HOME/.cache/vb"}/vb.cache"
-
-    [[ -d ${cache%/*} ]] || mkdir -p ${cache%/*}
 
     [[ -f $HOME/.vbrc ]] && source $HOME/.vbrc
+
+    if [[ -n $VB_CACHE ]]; then
+        if [[ -d $VB_CACHE || $VB_CACHE == */ ]]; then
+            VB_CACHE=$VB_CACHE/vb.cache
+        fi
+    else
+        VB_CACHE="${ZSH_CACHE_DIR:-"$HOME/.cache/vb"}/vb.cache"
+    fi
+
+    [[ -d ${VB_CACHE%/*} ]] || mkdir -p ${VB_CACHE%/*}
 
     if ${VB_COLOR:=true}; then
         : ${VB_ERROR_COLOR:='\e[0;91m'}
@@ -24,13 +31,13 @@ vb() {
         VB_RESET=''
     fi
 
-    if [[ -f $cache ]]; then
-        current_box="$( < $cache )"
+    if [[ -f $VB_CACHE ]]; then
+        current_box="$( < $VB_CACHE)"
     else
         printf "${VB_WARNING_COLOR}Box not previously set. "
         printf "Setting to first box in array.\n"
         printf "Use \`vb switch' to change.$VB_RESET\n"
-        echo ${VB_BOXES[1]} > $cache
+        echo ${VB_BOXES[1]} > $VB_CACHE
         current_box="${VB_BOXES[1]}"
     fi
 
@@ -74,7 +81,7 @@ vb() {
                 (( index++ ))
             done
 
-            echo $box > $cache
+            echo $box > $VB_CACHE
             printf "Switching to box [${VB_SUCCESS_COLOR}$box$VB_RESET]\n"
             ;;
 
@@ -113,7 +120,7 @@ vb() {
                 return 0
             fi
 
-            echo $desired_box > $cache
+            echo $desired_box > $VB_CACHE
             printf "Switching to box "
             printf "[${VB_SUCCESS_COLOR}$desired_box$VB_RESET]\n"
             ;;

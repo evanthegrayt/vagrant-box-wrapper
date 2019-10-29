@@ -12,8 +12,8 @@ commands deal with.
   - [Vanilla Zsh or Bash](#vanilla-zsh-or-bash)
 - [Usage](#usage)
   - [Setup](#setup)
-  - [Colors](#colors)
   - [Commands](#commands)
+  - [Customization](#customization)
 
 ## Screenshot Example
 ![](images/example.jpg)
@@ -79,18 +79,6 @@ VB_BOXES=(vagrant_box_1 vagrant_box_2 vagrant_box_3)
 You can view my `.vbrc` file
 [here](https://github.com/evanthegrayt/dotfiles/blob/master/dotfiles/vbrc).
 
-### Colors
-Additionally, you can enable/disable colored terminal output, and even change
-the colors, by adding the following to your `~/.vbrc` or a startup file.
-
-```sh
-VB_COLOR=false               # Default: true. Setting to false disables colors
-# The following lines would make the colored output bold.
-VB_SUCCESS_COLOR='\e[1;92m'  # Bold green.   Default: '\e[0;92m' (green)
-VB_WARNING_COLOR='\e[1;93m'  # Bold yellow.  Default: '\e[0;93m' (yellow)
-VB_ERROR_COLOR='\e[1;91m'    # Bold red.     Default: '\e[0;91m' (red)
-```
-
 ### Commands
 The `vb` command comes with a few unique arguments.
 - `switch` switches the box to the next in the array.
@@ -102,6 +90,29 @@ The `vb` command comes with a few unique arguments.
 
 Any other argument, `vb` will attempt to forward to the `vagrant` command. Use
 this feature to run common `vagrant` commands, such as `up`, `ssh`, `halt`, etc.
+
+### Customization
+You can enable/disable colored terminal output, and even change
+the colors, by adding the following to your `~/.vbrc` or a startup file.
+
+```sh
+VB_COLOR=false               # Default: true. Setting to false disables colors
+# The following lines would make the colored output bold.
+VB_SUCCESS_COLOR='\e[1;92m'  # Bold green.   Default: '\e[0;92m' (green)
+VB_WARNING_COLOR='\e[1;93m'  # Bold yellow.  Default: '\e[0;93m' (yellow)
+VB_ERROR_COLOR='\e[1;91m'    # Bold red.     Default: '\e[0;91m' (red)
+```
+
+By default, the cache file is `$ZSH_CACHE_DIR/vb.cache` if running `.oh-my-zsh`,
+or `~/.cache/vb.cache` if not. To change this, change `VB_CACHE` to a directory
+or file name in `~/.vbrc` or a startup file. Note that if pointed to a directory
+(either an existing directory, or a string ending in `/`), the file name will
+always be named `vb.cache`. If the directory doesn't exist, it will be created
+with `mkdir -p`.
+
+```sh
+VB_CACHE=$HOME/.vb.cache
+```
 
 ## Reporting bugs
 If you have an idea or find a bug, please [create an
