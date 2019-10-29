@@ -16,6 +16,9 @@ with custom tab-completion for both `zsh` and `bash`.
   - [Customization](#customization)
 
 ## Screenshot Example
+This program's purpose is best explained with a screenshot. Notice, I'm running
+the commands from within my home directory, which is *not* where my vagrant box
+directories are located.
 ![](images/example.jpg)
 
 ## Installation
