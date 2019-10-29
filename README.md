@@ -1,8 +1,8 @@
 # Vagrant Box Wrapper
 A wrapper plugin for [vagrant](https://www.vagrantup.com/) that allows for
-calling `vagrant` commands from outside of the box directory. Also, if the user
-has multiple `vagrant` boxes, the `switch` parameter switches which box the
-commands deal with.
+calling `vagrant` commands from outside of the box directory. The plugin also
+ships with a few extra commands that help to manage more than one box, along
+with custom tab-completion for both `zsh` and `bash`.
 
 ## Table of Contents
 - [Screenshot Example](#screenshot-example)
