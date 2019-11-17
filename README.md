@@ -10,10 +10,10 @@ with custom tab-completion for both `zsh` and `bash`.
   - [Oh-My-Zsh](#oh-my-zsh)
   - [Bash-It](#bash-it)
   - [Vanilla Zsh or Bash](#vanilla-zsh-or-bash)
+- [Setup](#setup)
 - [Usage](#usage)
-  - [Setup](#setup)
-  - [Commands](#commands)
-  - [Customization](#customization)
+- [Customization](#customization)
+- [Reporting Bugs](#reporting-bugs)
 
 ## Screenshot Example
 This program's purpose is best explained with a screenshot. Notice, I'm running
@@ -23,7 +23,8 @@ directories are located.
 
 ## Installation
 ### oh-my-zsh
-Clone the repository in your `$ZSH_CUSTOM/plugins` directory
+Clone the repository in your `$ZSH_CUSTOM/plugins` directory. Note that the
+directory name needs to be `vb`, so clone it as such.
 ```sh
 git clone https://github.com/evanthegrayt/vagrant-box-wrapper.git \
   $ZSH_CUSTOM/plugins/vb
@@ -61,8 +62,7 @@ directly.
 source $INSTALLATION_PATH/vb.sh # in either ~/.zshrc or ~/.bashrc
 ```
 
-## Usage
-### Setup
+## Setup
 To use this function, you need to add `VB_BOXES_LOCATION=[dir]` and
 `VB_BOXES=([BOX NAMES])` as variables in either a startup file, or a file named
 `$HOME/.vbrc`.
@@ -82,19 +82,23 @@ VB_BOXES=(vagrant_box_1 vagrant_box_2 vagrant_box_3)
 You can view my `.vbrc` file
 [here](https://github.com/evanthegrayt/dotfiles/blob/master/dotfiles/vbrc).
 
-### Commands
+## Usage
 The `vb` command comes with a few unique arguments.
-- `switch` switches the box to the next in the array.
-- `list` displays all available boxes, and which is currently being used.
-- `cd` changes your current directory to the current box loction.
-- `echo` lists the full path to the current box.
-- `use [BOX]` skips cycling of boxes and sets current box to `BOX`.
-- `-h` gives a brief usage.
+
+|Argument|What it does|
+|:------|:------------|
+|`switch`|Switches the box to the next in the array.|
+|`list`|Displays all available boxes, and which is currently being used.|
+|`cd`|Changes your current directory to the current box location.|
+|`echo`|Lists the full path to the current box.|
+|`use [BOX]`|Skips cycling of boxes and sets current box to `BOX`.|
+|`-h`|Gives a brief usage.|
 
 Any other argument, `vb` will attempt to forward to the `vagrant` command. Use
-this feature to run common `vagrant` commands, such as `up`, `ssh`, `halt`, etc.
+this feature to run common `vagrant` commands, such as `up`, `ssh`, `halt`,
+etc., from anywhere.
 
-### Customization
+## Customization
 You can enable/disable colored terminal output, and even change
 the colors, by adding the following to your `~/.vbrc` or a startup file.
 
