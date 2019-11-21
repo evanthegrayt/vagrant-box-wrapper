@@ -19,7 +19,7 @@ with custom tab-completion for both `zsh` and `bash`.
 This program's purpose is best explained with a screenshot. Notice, I'm running
 the commands from within my home directory, which is *not* where my vagrant box
 directories are located.
-![](images/example.jpg)
+![](https://user-images.githubusercontent.com/12698076/69293627-1c59bb80-0bcf-11ea-95d7-8eadc730bb18.jpg)
 
 ## Installation
 ### oh-my-zsh
