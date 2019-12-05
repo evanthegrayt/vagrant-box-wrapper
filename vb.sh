@@ -25,10 +25,7 @@ vb() {
         : ${VB_WARNING_COLOR:='\e[0;93m'}
         VB_RESET='\e[0m'
     else
-        VB_ERROR_COLOR=''
-        VB_SUCCESS_COLOR=''
-        VB_WARNING_COLOR=''
-        VB_RESET=''
+        unset VB_ERROR_COLOR VB_SUCCESS_COLOR VB_WARNING_COLOR VB_RESET
     fi
 
     if [[ -f $VB_CACHE ]]; then
