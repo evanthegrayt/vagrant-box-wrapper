@@ -14,6 +14,7 @@ with custom tab-completion for both `zsh` and `bash`.
 - [Usage](#usage)
 - [Customization](#customization)
 - [Reporting Bugs](#reporting-bugs)
+- [Self-Promotion](#self-promotion)
 
 ## Screenshot Example
 This program's purpose is best explained with a screenshot. Notice, I'm running
@@ -133,3 +134,8 @@ for your shell
 / [zsh](http://zsh.sourceforge.net/Doc/Release/Completion-System.html)). If,
 after reading the manual, you still have problems, feel free to submit an issue.
 
+## Self-Promotion
+I do these projects for fun, and I enjoy knowing that they're helpful to people.
+Consider starring [the
+repository](https://github.com/evanthegrayt/vagrant-box-wrapper) if you like it!
+If you love it, follow me [on github](https://github.com/evanthegrayt)!
