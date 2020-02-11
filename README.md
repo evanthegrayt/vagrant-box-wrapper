@@ -112,11 +112,11 @@ VB_ERROR_COLOR='\e[1;91m'    # Bold red.     Default: '\e[0;91m' (red)
 ```
 
 By default, the cache file is `$ZSH_CACHE_DIR/vb.cache` if running `.oh-my-zsh`,
-or `~/.cache/vb.cache` if not. To change this, change `VB_CACHE` to a directory
-or file name in `~/.vbrc` or a startup file. Note that if pointed to a directory
-(either an existing directory, or a string ending in `/`), the file name will
-always be named `vb.cache`. If the directory doesn't exist, it will be created
-with `mkdir -p`.
+or `~/.cache/vb/vb.cache` if not. To change this, change `VB_CACHE` to a
+directory or file name in `~/.vbrc` or a startup file. Note that if pointed to a
+directory (either an existing directory, or a string ending in `/`), the file
+name will always be named `vb.cache`. If the directory doesn't exist, it will be
+created with `mkdir -p`.
 
 ```sh
 VB_CACHE=$HOME/.vb.cache
