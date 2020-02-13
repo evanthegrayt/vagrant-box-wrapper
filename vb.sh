@@ -6,6 +6,7 @@ vb() {
     local current_box
 
     local cmd="$1"
+    local subcmd="$2"
 
     [[ -f $HOME/.vbrc ]] && source $HOME/.vbrc
 
@@ -84,6 +85,16 @@ vb() {
 
         cd)
             cd $working_dir
+
+            if [[ -n $subcmd ]]; then
+                if [[ -d $subcmd ]]; then
+                    cd $subcmd
+                else
+                    printf "Subdir [$VB_ERROR_COLOR$subcmd$VB_RESET] " >&2
+                    printf "doesn't exist.\n" >&2
+                    return 1
+                fi
+            fi
             ;;
 
         echo)
@@ -91,7 +102,7 @@ vb() {
             ;;
 
         use)
-            box="$2"
+            box="$subcmd"
 
             if [[ -z $box ]]; then
                 printf "${VB_ERROR_COLOR}No box specified.$VB_RESET\n"
