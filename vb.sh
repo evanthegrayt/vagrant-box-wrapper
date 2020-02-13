@@ -8,27 +8,6 @@ vb() {
     local cmd="$1"
     local subcmd="$2"
 
-    [[ -f $HOME/.vbrc ]] && source $HOME/.vbrc
-
-    if [[ -n $VB_CACHE ]]; then
-        if [[ -d $VB_CACHE || $VB_CACHE == */ ]]; then
-            VB_CACHE=$VB_CACHE/vb.cache
-        fi
-    else
-        VB_CACHE="${ZSH_CACHE_DIR:-"$HOME/.cache/vb"}/vb.cache"
-    fi
-
-    [[ -d ${VB_CACHE%/*} ]] || mkdir -p ${VB_CACHE%/*}
-
-    if ${VB_COLOR:=true}; then
-        : ${VB_ERROR_COLOR:='\e[0;91m'}
-        : ${VB_SUCCESS_COLOR:='\e[0;92m'}
-        : ${VB_WARNING_COLOR:='\e[0;93m'}
-        VB_RESET='\e[0m'
-    else
-        unset VB_ERROR_COLOR VB_SUCCESS_COLOR VB_WARNING_COLOR VB_RESET
-    fi
-
     if [[ -f $VB_CACHE ]]; then
         current_box="$( < $VB_CACHE)"
     else
@@ -166,3 +145,25 @@ __vb_vagrant_args() {
     printf "list\nuse\nswitch\ncd\necho\n"
     vagrant -h | "grep" -E "^\s+" | awk '{print $1}' | tr -d ','
 }
+
+[[ -f $HOME/.vbrc ]] && source $HOME/.vbrc
+
+if [[ -n $VB_CACHE ]]; then
+    if [[ -d $VB_CACHE || $VB_CACHE == */ ]]; then
+        VB_CACHE=$VB_CACHE/vb.cache
+    fi
+else
+    VB_CACHE="${ZSH_CACHE_DIR:-"$HOME/.cache/vb"}/vb.cache"
+fi
+
+[[ -d ${VB_CACHE%/*} ]] || mkdir -p ${VB_CACHE%/*}
+
+if ${VB_COLOR:=true}; then
+    : ${VB_ERROR_COLOR:='\e[0;91m'}
+    : ${VB_SUCCESS_COLOR:='\e[0;92m'}
+    : ${VB_WARNING_COLOR:='\e[0;93m'}
+    VB_RESET='\e[0m'
+else
+    unset VB_ERROR_COLOR VB_SUCCESS_COLOR VB_WARNING_COLOR VB_RESET
+fi
+
