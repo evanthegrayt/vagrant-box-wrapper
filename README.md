@@ -4,17 +4,8 @@ calling `vagrant` commands from outside of the box directory. The plugin also
 ships with a few extra commands that help to manage more than one box, along
 with custom tab-completion for both `zsh` and `bash`.
 
-## Table of Contents
-- [Screenshot Example](#screenshot-example)
-- [Installation](#installation)
-  - [Oh-My-Zsh](#oh-my-zsh)
-  - [Bash-It](#bash-it)
-  - [Vanilla Zsh or Bash](#vanilla-zsh-or-bash)
-- [Setup](#setup)
-- [Usage](#usage)
-- [Customization](#customization)
-- [Reporting Bugs](#reporting-bugs)
-- [Self-Promotion](#self-promotion)
+View on [GitHub](https://github.com/evanthegrayt/vagrant-box-wrapper) |
+[GitHub Pages](https://evanthegrayt.github.io/vagrant-box-wrapper/)
 
 ## Screenshot Example
 This program's purpose is best explained with a screenshot. Notice, I'm running
