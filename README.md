@@ -11,30 +11,10 @@ View on [GitHub](https://github.com/evanthegrayt/vagrant-box-wrapper) |
 This program's purpose is best explained with a screenshot. Notice, I'm running
 the commands from within my home directory, which is *not* where my vagrant box
 directories are located.
-![](https://user-images.githubusercontent.com/12698076/69293627-1c59bb80-0bcf-11ea-95d7-8eadc730bb18.jpg)
+
+![](https://github.com/evanthegrayt/vagrant-box-wrapper/releases/download/v2.0.0/vb-screenshot.png)
 
 ## Installation
-### oh-my-zsh
-Clone the repository in your `$ZSH_CUSTOM/plugins` directory. Note that the
-directory name needs to be `vb`, so clone it as such.
-```sh
-git clone https://github.com/evanthegrayt/vagrant-box-wrapper.git \
-  $ZSH_CUSTOM/plugins/vb
-```
-Then add the plugin to your `$HOME/.zshrc` file in the `plugins` array:
-```sh
-plugins=(vb) # Obviously, leave your other plugins in the array.
-```
-
-### bash-it
-Clone the repository in your `$BASH_IT_CUSTOM` directory
-```sh
-git clone https://github.com/evanthegrayt/vagrant-box-wrapper.git \
-  $BASH_IT_CUSTOM/vb
-```
-Files in this directory that end with `.bash` are automatically sourced, so
-there's nothing else to do.
-
 ### Vanilla zsh or bash
 Clone the repository wherever you like, and source either the `vb.plugin.zsh`
 file for `zsh`, or `vb.plugin.bash` file for `bash`, from one of your startup
@@ -42,8 +22,8 @@ files, such as `~/.zshrc` or `~/.bashrc`, respectively.
 
 ```sh
 # Where $INSTALLATION_PATH is the path to where you installed the plugin.
-source $INSTALLATION_PATH/vb.plugin.zsh  # in ~/.zshrc
-source $INSTALLATION_PATH/vb.plugin.bash # in ~/.bashrc
+source "$INSTALLATION_PATH/vb.plugin.zsh"  # in ~/.zshrc
+source "$INSTALLATION_PATH/vb.plugin.bash" # in ~/.bashrc
 ```
 
 If you're using a version of `zsh`/`bash` that doesn't support the completion
@@ -51,48 +31,80 @@ features, or you just don't want to use them, just source the `vb.sh` file
 directly.
 
 ```sh
-source $INSTALLATION_PATH/vb.sh # in either ~/.zshrc or ~/.bashrc
+source "$INSTALLATION_PATH/vb.sh" # in either ~/.zshrc or ~/.bashrc
 ```
 
-## Setup
-To use this function, you need to add `VB_BOXES_LOCATION=[dir]` and
-`VB_BOXES=([BOX NAMES])` as variables in either a startup file, or a file named
-`$HOME/.vbrc`.
+Or use your favorite package manager and follow its instructions.
 
-- `VB_BOX_LOCATION` should be a string set to the path where the boxes are
-located.
-- `VB_BOXES` should be an array, with each element being a *directory*
-that contains a vagrant box.
+### oh-my-zsh
+Clone the repository in your `$ZSH_CUSTOM/plugins` directory. The directory name
+needs to be `vb`, so clone it as such.
 
 ```sh
-# These lines should go in either a startup file, such as `~/.zshrc` or
-# `~/.bashrc`, or ~/.vbrc.
-VB_BOXES_LOCATION="/path/to/where/boxes/are"
-VB_BOXES=(vagrant_box_1 vagrant_box_2 vagrant_box_3)
+git clone https://github.com/evanthegrayt/vagrant-box-wrapper.git \
+  $ZSH_CUSTOM/plugins/vb
 ```
 
-You can view my `.vbrc` file
-[here](https://github.com/evanthegrayt/dotfiles/blob/master/dotfiles/vbrc).
+Then add the plugin to the `plugins` array in your `$HOME/.zshrc` file:
+
+```sh
+plugins=(vb) # Leave your other plugins in the array.
+```
+
+### bash-it
+Clone the repository in your `$BASH_IT_CUSTOM` directory.
+
+```sh
+git clone https://github.com/evanthegrayt/vagrant-box-wrapper.git \
+  $BASH_IT_CUSTOM/vb
+```
+
+Files in this directory that end with `.bash` are automatically sourced, so
+there's nothing else to do.
+
+## Setup
+Set `VB_BOXES` in your shell init file, such as `~/.zshrc`, `~/.bashrc`, or
+another file that your shell init file already sources.
+
+`VB_BOXES` is a colon-delimited string of full paths to your vagrant box
+directories. It works like `PATH`, so it can be exported and reused by other
+scripts.
+
+```sh
+# In ~/.zshrc, ~/.bashrc, or another file sourced by your shell init file.
+export VB_BOXES="/full/path/to/vb_box1:/another/path/to/vb_box2"
+```
+
+Each configured path should point directly at a directory that contains a
+vagrant box. The box name used by `vb` is the directory name, so the example
+above gives you two switchable boxes: `vb_box1` and `vb_box2`.
+
+Box names must be unique. Paths that contain literal colons are not supported.
 
 ## Usage
 The `vb` command comes with a few unique arguments.
 
 |Argument|What it does|
 |:------|:------------|
-|`switch`|Switches the box to the next in the array.|
+|`switch`|Switches to the next configured box.|
 |`list`|Displays all available boxes, and which is currently being used.|
 |`cd`|Changes your current directory to the current box location.|
 |`echo`|Lists the full path to the current box.|
-|`use [BOX]`|Skips cycling of boxes and sets current box to `BOX`.|
+|`use [BOX]`|Sets the current box directly to `BOX`.|
 |`-h`|Gives a brief usage.|
 
-Any other argument, `vb` will attempt to forward to the `vagrant` command. Use
+Use `vb switch` to cycle through the configured boxes, or `vb use vb_box1` to
+switch directly by name. Tab-completion after `vb use` lists box names only, not
+their full paths. Run `vb list` to see all configured boxes and the current
+selection, or `vb echo` to print the selected box's full path.
+
+With any other argument, `vb` attempts to forward to the `vagrant` command. Use
 this feature to run common `vagrant` commands, such as `up`, `ssh`, `halt`,
 etc., from anywhere.
 
 ## Customization
 You can enable/disable colored terminal output, and even change
-the colors, by adding the following to your `~/.vbrc` or a startup file.
+the colors, by adding the following to your shell init file.
 
 ```sh
 VB_COLOR=false               # Default: true. Setting to false disables colors
@@ -102,12 +114,12 @@ VB_WARNING_COLOR='\e[1;93m'  # Bold yellow.  Default: '\e[0;93m' (yellow)
 VB_ERROR_COLOR='\e[1;91m'    # Bold red.     Default: '\e[0;91m' (red)
 ```
 
-By default, the cache file is `$ZSH_CACHE_DIR/vb.cache` if running `.oh-my-zsh`,
-or `~/.cache/vb/vb.cache` if not. To change this, change `VB_CACHE` to a
-directory or file name in `~/.vbrc` or a startup file. Note that if pointed to a
-directory (either an existing directory, or a string ending in `/`), the file
-name will always be named `vb.cache`. If the directory doesn't exist, it will be
-created with `mkdir -p`.
+By default, the cache file is `$ZSH_CACHE_DIR/vb.cache` when `ZSH_CACHE_DIR` is
+set, or `~/.cache/vb/vb.cache` otherwise. To change this, set `VB_CACHE` to a
+directory or file name in your shell init file. If `VB_CACHE` points to a
+directory, either an existing directory or a string ending in `/`, the file name
+will always be `vb.cache`. If the directory doesn't exist, it will be created
+with `mkdir -p`.
 
 ```sh
 VB_CACHE=$HOME/.vb.cache
